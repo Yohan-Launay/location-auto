@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Renting{% endblock %}
+
+{% block body %}
+    <h1>Renting</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ renting.id }}</td>
+            </tr>
+            <tr>
+                <th>DateStart</th>
+                <td>{{ renting.dateStart ? renting.dateStart|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateEnd</th>
+                <td>{{ renting.dateEnd ? renting.dateEnd|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CoefPrice</th>
+                <td>{{ renting.coefPrice }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ renting.vehicle.model }}</td>
+            </tr>
+            <tr>
+                <th>First name</th>
+                <td>{{ renting.customer.firstName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_renting_index') }}">back to list</a>
+
+    <a href="{{ path('app_renting_edit', {'id': renting.id}) }}">edit</a>
+
+    {{ include('renting/_delete_form.html.twig') }}
+{% endblock %}
