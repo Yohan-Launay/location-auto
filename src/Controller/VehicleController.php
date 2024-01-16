@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/')]
+#[Route('/user/vehicle')]
 class VehicleController extends AbstractController
 {
     #[Route('', name: 'app_vehicle_index', methods: ['GET'])]
@@ -22,7 +22,7 @@ class VehicleController extends AbstractController
         ]);
     }
 
-    #[Route('vehicle/new', name: 'app_vehicle_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_vehicle_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $vehicle = new Vehicle();

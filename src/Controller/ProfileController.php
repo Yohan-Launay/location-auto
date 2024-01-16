@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileController extends AbstractController
 {
 
-    #[Route('/profile', name: 'app_profile')]
+    #[Route('/user/profile', name: 'app_profile')]
     public function index(Request $request, EntityManagerInterface $em): Response
     {
         /**

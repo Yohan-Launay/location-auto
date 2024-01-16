@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/renting')]
+#[Route('/user/renting')]
 class RentingController extends AbstractController
 {
     #[Route('/', name: 'app_renting_index', methods: ['GET'])]
