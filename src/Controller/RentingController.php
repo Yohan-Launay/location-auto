@@ -11,14 +11,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/user/renting')]
+#[Route('/customer/renting')]
 class RentingController extends AbstractController
 {
     #[Route('/', name: 'app_renting_index', methods: ['GET'])]
     public function index(RentingRepository $rentingRepository): Response
     {
+        /**
+         * @var User
+         */
+        $user = $this->getUser();
+
         return $this->render('renting/index.html.twig', [
-            'rentings' => $rentingRepository->findAll(),
+            'rentings' => $rentingRepository->find(['customer_id' => $user->getId()]),
         ]);
     }
 
@@ -30,6 +35,7 @@ class RentingController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $renting->setStatus(0);
             $entityManager->persist($renting);
             $entityManager->flush();
 

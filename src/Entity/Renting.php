@@ -29,6 +29,9 @@ class Renting
     #[ORM\ManyToOne(inversedBy: 'renting')]
     private ?Customer $customer = null;
 
+    #[ORM\Column]
+    private ?int $status = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Renting
     public function setCustomer(?Customer $customer): static
     {
         $this->customer = $customer;
+
+        return $this;
+    }
+
+    public function getStatus(): ?int
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }
